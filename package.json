@@ -1,16 +1,16 @@
 {
   "name": "ramlparser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Luix <hadesbox@gmail.com>",
   "description": "a simple CLI parser for raml files",
   "scripts": {},
   "main" : "raml-parser.js",
   "dependencies" : {
     "colors" : "*",
-    "raml-parser"   :  "*"
+    "raml-1-parser"   :  "*"
   },
   "bin": {
     "ramlparser": "raml-parser.js"
-  },  
+  },
   "preferGlobal": true
 }
