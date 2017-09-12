@@ -21,5 +21,6 @@ else{
         console.log("your RAML file is correct!")
     }, function(error) {
         console.error("Errors found:\n", error.parserErrors);
+        process.exit(1);
     });
 }
