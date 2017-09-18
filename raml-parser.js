@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var raml = require('raml-parser');
+var raml = require('raml-1-parser');
 var fs = require("fs");
 
 if(process.argv.length < 3){
@@ -16,12 +16,11 @@ if(input_file=="" || !fs.existsSync(input_file)){
     process.exit(-1);
 }
 else{
-	console.log("Parsing", input_file, "...");
-	raml.loadFile(input_file).then(function(data) {
-	    console.log("your RAML file is correct!")
-	}, function(error) {
-	    console.error("Error while parsing your file, ", error.message);
-	    console.error("at", error.problem_mark.name);
-	    console.error("line:", error.problem_mark.line, "column:", error.problem_mark.column);
-	});	
+    console.log("Parsing", input_file, "...");
+    raml.loadRAML(input_file,[], {rejectOnErrors: true}).then(function(data) {
+        console.log("your RAML file is correct!")
+    }, function(error) {
+        console.error("Errors found:\n", error.parserErrors);
+        process.exit(1);
+    });
 }
